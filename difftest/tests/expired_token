@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+SERVICE_ROOT=${TOKEN_SERVICE_ROOT?You must specify a TOKEN_SERVICE_ROOT}
+TOKEN=$(curl -s ${SERVICE_ROOT}/create?expiration_seconds=1 --data '{"data":"74F73E84-DC92-4CF6-8151-6088A7C7EEF6"}' | jq --raw-output ".token")
+sleep 1
+curl -s ${SERVICE_ROOT}/validate/${TOKEN}
+echo
+curl -s ${SERVICE_ROOT}/get_expired/${TOKEN}
+echo

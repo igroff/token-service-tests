@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+SERVICE_ROOT=${TOKEN_SERVICE_ROOT?You must specify a TOKEN_SERVICE_ROOT}
+DATA_ONE="first_data"
+DATA_TWO="second_data"
+TOKEN=$(curl -s "${SERVICE_ROOT}/create?expiration_seconds=10000&data=${DATA_ONE}&data=${DATA_TWO}"  | jq --raw-output ".token")
+curl -s ${SERVICE_ROOT}/validate/${TOKEN}
+
