@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+set -e
+SERVICE_ROOT=${TOKEN_SERVICE_ROOT?You must specify a TOKEN_SERVICE_ROOT}
+TOKEN=$(curl -s ${SERVICE_ROOT}/create -H 'Content-Type: application/json' --data '{"expiration_seconds":300223,"data":"some data"}' | jq --raw-output ".token")
+curl -s ${SERVICE_ROOT}/validate/${TOKEN}
+

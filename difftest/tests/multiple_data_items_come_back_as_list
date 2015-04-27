@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+set -e
 SERVICE_ROOT=${TOKEN_SERVICE_ROOT?You must specify a TOKEN_SERVICE_ROOT}
 DATA_ONE="first_data"
 DATA_TWO="second_data"
